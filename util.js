@@ -9,3 +9,11 @@ function randf() {
   let max = arguments[1];
   return min + Math.random()*(max - min);
 }
+
+function randi() {
+  // randi() returns 0 or 1
+  // randi(max) returns random interger in [0, max)
+  // randi(min, max) return random integers in [min, max]
+  if(arguments.length === 0) return randi(2); // 0 or 1
+  else return Math.floor(randf(...arguments));
+}
