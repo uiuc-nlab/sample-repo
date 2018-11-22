@@ -44,24 +44,22 @@ function LCG() {
   }
 }
 
-function randi() {
+function randi(a, b) {
   // randi() returns 0 or 1
-  // randi(max) returns random interger in [0, max)
-  // randi(min, max) return random integers in [min, max]
-  if(arguments.length === 0) return randi(2); // 0 or 1
-  else return Math.floor(randf(...arguments));
+  // randi(a) returns random interger in [0, a)
+  // randi(a, b) return random integers in [a, b)
+  if(a == null) return Math.floor(2 * rand()); // 0 or 1
+  if(b == null) return Math.floor(a * rand());
+  return Math.floor(a + (b-a) * rand());
 }
 
-function randf() {
-  // randf() returns a random number in [0, 1)
-  // randf(max) returns a random number in [0, max)
-  // randf(min, max) returns a random number in [min, max)
-  let nargs = arguments.length;
-  if (nargs === 0) return rand();
-  if (nargs === 1) return arguments[0] * rand();
-  let min = arguments[0];
-  let max = arguments[1];
-  return min + rand()*(max - min);
+function randf(a, b) {
+  // randf() returns a random float in [0, 1)
+  // randf(a) returns a random float in [0, a)
+  // randf(a, b) returns a random float in [a, b)
+  if(a == null) return rand();
+  if(b == null) return a * rand();
+  return a + (b - a) * rand();
 }
 
 function randn(std) {
